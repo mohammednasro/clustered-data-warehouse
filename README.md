@@ -48,6 +48,22 @@ This Spring Boot application provides an API for for Accept deal details and per
 
     Open a web browser and go to `http://localhost:8080/swagger-ui.html`.
 
+
+6. For run using Docker Compose
+
+- If you want to use Running Application Using Docker Compose, first, you must install Docker on your machine. 
+- We need to follow the following path:
+
+- Run the following command line to build firstly
+ ```bash
+ sudo docker compose build
+ ```
+- Run the following command line to up docker compose
+ ```bash
+ sudo docker compose up
+ ```
+
+
 ## Usage
 
 ### API Endpoints
