@@ -52,8 +52,10 @@ This Spring Boot application provides an API for for Accept deal details and per
 6. For run using Docker Compose
 
 - If you want to use Running Application Using Docker Compose, first, you must install Docker on your machine. 
-- We need to follow the following path:
-
+- We need to follow the following repo path:
+    ```bash
+  /clustered-data-warehouse
+ ```
 - Run the following command line to build firstly
  ```bash
  sudo docker compose build
@@ -63,6 +65,10 @@ This Spring Boot application provides an API for for Accept deal details and per
  sudo docker compose up
  ```
 
+- If you need to down thw docker compose you need proceed the following command line:
+ ```bash
+ sudo docker compose down
+ ```
 
 ## Usage
 
