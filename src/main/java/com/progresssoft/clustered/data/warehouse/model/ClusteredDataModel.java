@@ -1,0 +1,42 @@
+package com.progresssoft.clustered.data.warehouse.model;
+
+import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Table(name="clustereddata")
+@Entity
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ClusteredDataModel {
+	
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
+	
+	@Column(name= "from_currency")
+	private String fromCurrency;
+	
+	@Column(name= "to_currency")
+	private String toCurrency;
+	
+	@Column(name= "timestamp")
+	private Date timestamp;
+	
+	@Column(name= "amount")
+	private Double amount;
+
+
+}
