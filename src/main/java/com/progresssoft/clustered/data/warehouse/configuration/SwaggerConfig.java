@@ -17,7 +17,7 @@ public class SwaggerConfig {
 	public OpenAPI springShopOpenAPI() {
 
 		return new OpenAPI()
-				.info(new Info().title("API").description("asdasdasdasd").version("v0.0.1")
+				.info(new Info().title("API").description("This Spring Boot application provides an API for for Accept deal details and persist them in the DB via RESTful endpoints and persists them in the database.").version("v0.0.1")
 						.license(new License().name("Apache 2.0").url("http://springdoc.org")))
 				.externalDocs(new ExternalDocumentation().description("SpringShop Wiki Documentation")
 						.url("https://springshop.wiki.github.org/docs"));
