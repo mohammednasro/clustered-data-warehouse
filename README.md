@@ -29,7 +29,7 @@ This Spring Boot application provides an API for for Accept deal details and per
 2. Navigate to the project directory:
 
     ```bash
-    cd sclustered-data-warehouse
+    cd clustered-data-warehouse/clustered-data-warehouse
     ```
 
 3. Build the project:
