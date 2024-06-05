@@ -21,22 +21,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ClusteredDataModel {
 	
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(name= "from_currency")
+	@Column(name= "from_currency",nullable = false)
 	private String fromCurrency;
 	
-	@Column(name= "to_currency")
+	@Column(name= "to_currency",nullable = false)
 	private String toCurrency;
 	
-	@Column(name= "timestamp")
+	@Column(name= "timestamp",nullable = false)
 	private Date timestamp;
 	
-	@Column(name= "amount")
+	@Column(name= "amount",nullable = false)
 	private Double amount;
-
 
 }
