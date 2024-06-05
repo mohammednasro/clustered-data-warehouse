@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +21,14 @@ import com.progresssoft.clustered.data.warehouse.exception.WebserviceValidationE
 @RestControllerAdvice
 public class ClusteredDataExceptionAdvice {
 
+	private static final Logger LOG = LoggerFactory.getLogger(ClusteredDataExceptionAdvice.class);
+
 	@ExceptionHandler(ClusteredDataException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public String bindExceptionHandler(ClusteredDataException ex) {
+
+		LOG.error("ClusteredDataException [{}] ", ex.getMessage());
+
 		return ex.getMessage();
 	}
 

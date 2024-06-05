@@ -7,10 +7,12 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.progresssoft.clustered.data.warehouse.dto.ClusteredDataDTO;
 import com.progresssoft.clustered.data.warehouse.dto.ClusteredDataListDTO;
 
+@SpringBootTest
 class ClusteredDataFacadeTest {
 
 	@Autowired
@@ -33,7 +35,7 @@ class ClusteredDataFacadeTest {
 
 	@Test
 	void testAddAll() {
-		clusteredDataFacade.addAll(ClusteredDataListDTO.builder().list(CLUSTERED_DATA_DTOS).build());
+		clusteredDataFacade.addAll(ClusteredDataListDTO.builder().list(ClusteredDataFacadeTest.CLUSTERED_DATA_DTOS).build());
 	}
 
 }
