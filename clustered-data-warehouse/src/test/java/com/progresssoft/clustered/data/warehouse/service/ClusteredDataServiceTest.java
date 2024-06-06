@@ -1,5 +1,7 @@
 package com.progresssoft.clustered.data.warehouse.service;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -30,7 +33,9 @@ class ClusteredDataServiceTest {
 
 	@Test
 	void testAdd() {
-		clusteredDataService.add(CLUSTERED_DATA_MODELS.iterator().next());
+		ClusteredDataModel clusteredDataModel = clusteredDataService.add(CLUSTERED_DATA_MODELS.iterator().next());
+		assertNotNull(clusteredDataModel);
+		assertNotNull(clusteredDataModel.getId());
 	}
 
 
@@ -45,8 +50,8 @@ class ClusteredDataServiceTest {
 	void testfindAll() {
 		Pageable pageable = PageRequest.of(0, 10, Sort.by("fromCurrency").ascending());
 
-		clusteredDataService.findAll(pageable);
-
+		Page<ClusteredDataModel> all = clusteredDataService.findAll(pageable);
+		assertNotNull(all);
 	}
 	
 	@Test
@@ -55,6 +60,9 @@ class ClusteredDataServiceTest {
 		ClusteredDataModel clusteredDataModel = clusteredDataService.add(CLUSTERED_DATA_MODELS.iterator().next());
 		
 		ClusteredDataModel byId = clusteredDataService.findById(clusteredDataModel.getId());
+		assertNotNull(byId);
+		assertNotNull(byId.getId());
+
 
 	}
 }

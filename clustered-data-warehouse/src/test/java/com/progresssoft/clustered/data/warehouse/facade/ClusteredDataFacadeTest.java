@@ -36,7 +36,9 @@ class ClusteredDataFacadeTest {
 	
 	@Test
 	void testAdd() {
-		clusteredDataFacade.add(CLUSTERED_DATA_DTOS.iterator().next());
+		ClusteredDataDTO clusteredDataDTO = clusteredDataFacade.add(CLUSTERED_DATA_DTOS.iterator().next());
+		assertNotNull(clusteredDataDTO);
+
 	}
 
 	@Test
