@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import com.progresssoft.clustered.data.warehouse.model.ClusteredDataModel;
 @SpringBootTest
@@ -37,4 +40,21 @@ class ClusteredDataServiceTest {
 
 	}
 
+    
+	@Test
+	void testfindAll() {
+		Pageable pageable = PageRequest.of(0, 10, Sort.by("fromCurrency").ascending());
+
+		clusteredDataService.findAll(pageable);
+
+	}
+	
+	@Test
+	void testfindId() {
+		
+		ClusteredDataModel clusteredDataModel = clusteredDataService.add(CLUSTERED_DATA_MODELS.iterator().next());
+		
+		ClusteredDataModel byId = clusteredDataService.findById(clusteredDataModel.getId());
+
+	}
 }

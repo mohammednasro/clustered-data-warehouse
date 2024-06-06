@@ -76,6 +76,8 @@ This Spring Boot application provides an API for for Accept deal details and per
 
 - `/v1/clustered-data/add`: POST - Create a new clustered data
 - `/v1/clustered-data/add/all`: POST - Create a list of clustered datas
+- `/v1/clustered-data`: GET - to get all clustered datas (pagaple)
+- `/v1/clustered-data/{id}`: GET - to get a clustered data with id 
 
 ### Request and Response Formats
 
