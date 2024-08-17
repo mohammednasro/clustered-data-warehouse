@@ -1,150 +1,93 @@
-# Spring Boot Microservices Demo
+# Spring Boot Clustered Data Warehouse Service
 
-## Overview
-
-**Spring Boot Microservices Demo** is a demonstration project designed to showcase a microservices architecture using Spring Boot. The project illustrates the integration of various microservices with modern tools and frameworks, providing a robust example of how to build and manage microservices using Java and Spring technologies.
+This Spring Boot application provides an API for for Accept deal details and persist them in the DB via RESTful endpoints and persists them in the database.
 
 ## Technologies Used
 
-- **Java 17**
-- **Spring Boot 3.1.x**
-- **Maven**
-- **Swagger UI (OpenAPI)**
-- **MySQL**
-- **Spring Cloud**
-- **Spring Cloud OpenFeign**
-- **Spring Boot Admin**
-- **Spring Cloud Netflix - Eureka Server**
-- **Spring Cloud Circuit Breaker**
-- **Spring Data JPA**
-- **MapStruct**
+- Java 17
+- Spring Boot
+- Maven
+- Swagger UI
+- MySQL
 
-## Microservices
-
-This project consists of the following Spring Boot microservices:
-
-1. **Eureka Server**
-   - **Application Name**: `EUREKA-SERVER`
-   - **Port**: `8761`
-   - **URL**: [http://localhost:8761/](http://localhost:8761/)
-
-2. **API Gateway**
-   - **Application Name**: `API-GATEWAY`
-   - **Port**: `7777`
-
-3. **Spring Boot Admin Server**
-   - **Application Name**: `ADMIN-SERVER`
-   - **Port**: `8888`
-   - **URL**: [http://localhost:8888/wallboard](http://localhost:8888/wallboard)
-
-4. **Doctor Service**
-   - **Application Name**: `DOCTOR-SERVER`
-   - **Port**: `8000`
-   - **Context Path**: `/doctor`
-   - **Swagger UI**: [http://localhost:8000/doctor/swagger-ui/index.html#/](http://localhost:8000/doctor/swagger-ui/index.html#/)
-
-5. **Patient Service**
-   - **Application Name**: `PATIENT-SERVER`
-   - **Port**: `9001`
-   - **Context Path**: `/patient`
-   - **Swagger UI**: [http://localhost:9001/patient/swagger-ui/index.html#/](http://localhost:9001/patient/swagger-ui/index.html#/)
-
-6. **Payment Service**
-   - **Application Name**: `PAYMENT-SERVER`
-   - **Port**: `3000`
-   - **Context Path**: `/payment`
-   - **Swagger UI**: [http://localhost:3000/payment/swagger-ui/index.html#/](http://localhost:3000/payment/swagger-ui/index.html#/)
-
-## API Access
-
-All APIs for the **Doctor**, **Patient**, and **Payment** services should be accessed through the **API Gateway** on port `7777`.
-
-## Setup and Run
+## Getting Started
 
 ### Prerequisites
 
-Before you start, ensure you have the following installed:
+- Java 17 JDK installed
+- Maven installed
+- MySQL database installed and running
 
-- **Java 17**
-- **Maven**
-- **MySQL** (or another database you prefer, ensure it's configured correctly)
+### Installation
 
-### Clone the Repository
+1. Clone the repository:
 
-```bash
-git clone https://github.com/mohammednasro/springboot-microservices-demo.git
-cd springboot-microservices-demo
-```
+    ```bash
+    git clone https://github.com/mohammednasro/clustered-data-warehouse
+    ```
 
-### Configure the Database
+2. Navigate to the project directory:
 
-Update the `application.properties` or `application.yml` files in each microservice with your database configuration.
+    ```bash
+    cd clustered-data-warehouse/clustered-data-warehouse
+    ```
 
-### Build the Project
+3. Build the project:
 
-To build the entire project, run:
+    ```bash
+    mvn clean package
+    ```
 
-```bash
-mvn clean install
-```
+4. Run the application:
 
-### Run the Microservices
+    ```bash
+    java -jar target/clustered-data-warehouse.jar
+    ```
 
-You can run each microservice individually. Start the microservices in the following order to ensure dependencies are correctly resolved:
+5. Access the Swagger UI documentation:
 
-1. **Eureka Server**
-   ```bash
-   mvn spring-boot:run -pl eureka
-   ```
+    Open a web browser and go to `http://localhost:8080/swagger-ui.html`.
 
-2. **Spring Boot Admin Server**
-   ```bash
-   mvn spring-boot:run -pl adminserver
-   ```
 
-3. **API Gateway**
-   ```bash
-   mvn spring-boot:run -pl api-gateway
-   ```
+6. For run using Docker Compose
 
-4. **Doctor Service**
-   ```bash
-   mvn spring-boot:run -pl doctor
-   ```
+- If you want to use Running Application Using Docker Compose, first, you must install Docker on your machine. 
+- We need to follow the following repo path:
+    ```bash
+  /clustered-data-warehouse
+ ```
+- Run the following command line to build firstly
+ ```bash
+ sudo docker compose build
+ ```
+- Run the following command line to up docker compose
+ ```bash
+ sudo docker compose up
+ ```
 
-5. **Patient Service**
-   ```bash
-   mvn spring-boot:run -pl patient
-   ```
-
-6. **Payment Service**
-   ```bash
-   mvn spring-boot:run -pl payment
-   ```
-
-### Docker Support
-
-A Dockerfile will be provided in a separate branch for containerized deployment. Please check the `docker` branch for details.
+- If you need to down thw docker compose you need proceed the following command line:
+ ```bash
+ sudo docker compose down
+ ```
 
 ## Usage
 
-- **Eureka Server**: [http://localhost:8761/](http://localhost:8761/)
-- **Spring Boot Admin Server**: [http://localhost:8888/wallboard](http://localhost:8888/wallboard)
-- **API Gateway**:
-  - **Doctor Service**: [http://localhost:7777/doctor/](http://localhost:7777/doctor/)
-  - **Patient Service**: [http://localhost:7777/patient/](http://localhost:7777/patient/)
-  - **Payment Service**: [http://localhost:7777/payment/](http://localhost:7777/payment/)
+### API Endpoints
 
-## Notes
+- `/v1/clustered-data/add`: POST - Create a new clustered data
+- `/v1/clustered-data/add/all`: POST - Create a list of clustered datas
+- `/v1/clustered-data`: GET - to get all clustered datas (pagaple)
+- `/v1/clustered-data/{id}`: GET - to get a clustered data with id 
 
-- Swagger UI for the **Doctor**, **Patient**, and **Payment** services can be accessed through the API Gateway.
-- Ensure all microservices are running before making API calls through the gateway.
+### Request and Response Formats
+
+- Request payloads and responses are in JSON format.
+- See the Swagger UI documentation for detailed information on request and response formats.
+
+## Configuration
+
+- Database configuration: Modify `application.properties` to configure the database connection settings.
 
 ## Contributing
 
-Contributions are welcome! Please submit pull requests or open issues for discussion.
-
-## Contact
-
-For further information, please contact **Mohammed Nasro**.
-
+Contributions are welcome! If you find any issues or have suggestions for improvements, please create a GitHub issue or submit a pull request.
